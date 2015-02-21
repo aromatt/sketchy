@@ -183,10 +183,14 @@
 <span id="141">141</span>
 <span id="142">142</span>
 <span id="143">143</span>
+<span id="144">144</span>
+<span id="145">145</span>
+<span id="146">146</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>f64</span>::<span class='ident'>consts</span>::<span class='ident'>E</span>;
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>hash</span>::{<span class='ident'>Hash</span>,<span class='ident'>SipHasher</span>};
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>hash</span>::<span class='ident'>Hash</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>iter</span>::<span class='ident'>repeat</span>;
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>marker</span>::<span class='ident'>PhantomData</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>num</span>::<span class='ident'>Float</span>;
 
 <span class='kw'>use</span> <span class='ident'>hash</span>::<span class='ident'>indexes</span>;
@@ -208,9 +212,10 @@
     <span class='ident'>depth</span>: <span class='ident'>usize</span>,
     <span class='ident'>width</span>: <span class='ident'>usize</span>,
     <span class='ident'>counters</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>u64</span><span class='op'>&gt;&gt;</span>,
+    <span class='ident'>marker</span>: <span class='ident'>PhantomData</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span>,
 }
 
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>E</span>: <span class='ident'>Hash</span><span class='op'>&lt;</span><span class='ident'>SipHasher</span><span class='op'>&gt;&gt;</span> <span class='ident'>CountMinSketch</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span> {
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>E</span>: <span class='ident'>Hash</span><span class='op'>&gt;</span> <span class='ident'>CountMinSketch</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span> {
     <span class='doccomment'>/// Returns a CountMinSketch which provides frequency estimates where the</span>
     <span class='doccomment'>/// error is within a factor of epsilon with the given confidence.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>with_confidence</span>(<span class='ident'>epsilon</span>: <span class='ident'>f64</span>, <span class='ident'>confidence</span>: <span class='ident'>f64</span>) <span class='op'>-&gt;</span> <span class='ident'>CountMinSketch</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span> {
@@ -227,6 +232,7 @@
             <span class='ident'>counters</span>: <span class='ident'>repeat</span>({
                 <span class='ident'>repeat</span>(<span class='number'>0</span>).<span class='ident'>take</span>(<span class='ident'>width</span>).<span class='ident'>collect</span>()
             }).<span class='ident'>take</span>(<span class='ident'>depth</span>).<span class='ident'>collect</span>(),
+            <span class='ident'>marker</span>: <span class='ident'>PhantomData</span>,
         }
     }
 

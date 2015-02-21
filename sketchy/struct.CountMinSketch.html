@@ -42,9 +42,8 @@
 
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>sketchy</a>::<wbr><a class='struct' href=''>CountMinSketch</a><wbr></span><span class='out-of-band'><span id='render-detail'>
-            <a id="collapse-all" href="#">[-]
-            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-659' href='../src/sketchy/countmin.rs.html#21-25'>[src]</a></span></h1>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-661' href='../src/sketchy/countmin.rs.html#22-27'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct CountMinSketch&lt;E&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>A Count-Min Sketch is a probabilistic data structure which provides
@@ -59,7 +58,7 @@ with the type of elements and the type of counter to use.</p>
 
 <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;how many? {}&quot;</span>, <span class='ident'>cms</span>.<span class='ident'>estimate</span>(<span class='string'>&quot;one hundred&quot;</span>));
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;E: <a class='trait' href='http://doc.rust-lang.org/nightly/core/hash/trait.Hash.html' title='core::hash::Hash'>Hash</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/core/hash/sip/struct.SipHasher.html' title='core::hash::sip::SipHasher'>SipHasher</a>&gt;&gt; <a class='struct' href='../sketchy/struct.CountMinSketch.html' title='sketchy::CountMinSketch'>CountMinSketch</a>&lt;E&gt;</code></h3><div class='impl-items'><h4 id='method.with_confidence' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.with_confidence' class='fnname'>with_confidence</a>(epsilon: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>, confidence: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>) -&gt; <a class='struct' href='../sketchy/struct.CountMinSketch.html' title='sketchy::CountMinSketch'>CountMinSketch</a>&lt;E&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;E: <a class='trait' href='http://doc.rust-lang.org/nightly/core/hash/trait.Hash.html' title='core::hash::Hash'>Hash</a>&gt; <a class='struct' href='../sketchy/struct.CountMinSketch.html' title='sketchy::CountMinSketch'>CountMinSketch</a>&lt;E&gt;</code></h3><div class='impl-items'><h4 id='method.with_confidence' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.with_confidence' class='fnname'>with_confidence</a>(epsilon: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>, confidence: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>) -&gt; <a class='struct' href='../sketchy/struct.CountMinSketch.html' title='sketchy::CountMinSketch'>CountMinSketch</a>&lt;E&gt;</code></h4>
 <div class='docblock'><p>Returns a CountMinSketch which provides frequency estimates where the
 error is within a factor of epsilon with the given confidence.</p>
 </div><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>(depth: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, width: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; <a class='struct' href='../sketchy/struct.CountMinSketch.html' title='sketchy::CountMinSketch'>CountMinSketch</a>&lt;E&gt;</code></h4>

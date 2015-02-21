@@ -42,9 +42,8 @@
 
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>sketchy</a>::<wbr><a class='struct' href=''>HyperLogLog</a><wbr></span><span class='out-of-band'><span id='render-detail'>
-            <a id="collapse-all" href="#">[-]
-            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-1214' href='../src/sketchy/hyperloglog.rs.html#20-25'>[src]</a></span></h1>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-1219' href='../src/sketchy/hyperloglog.rs.html#21-27'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct HyperLogLog&lt;E&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>A HyperLogLog allows for space-efficient estimates of the cardinality of
@@ -60,7 +59,7 @@ large multisets.</p>
 
 <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;cardinality: {}&quot;</span>, <span class='ident'>hll</span>.<span class='ident'>cardinality</span>());
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;E: <a class='trait' href='http://doc.rust-lang.org/nightly/core/hash/trait.Hash.html' title='core::hash::Hash'>Hash</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/core/hash/sip/struct.SipHasher.html' title='core::hash::sip::SipHasher'>SipHasher</a>&gt;&gt; <a class='struct' href='../sketchy/struct.HyperLogLog.html' title='sketchy::HyperLogLog'>HyperLogLog</a>&lt;E&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>(error: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>) -&gt; <a class='struct' href='../sketchy/struct.HyperLogLog.html' title='sketchy::HyperLogLog'>HyperLogLog</a>&lt;E&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;E: <a class='trait' href='http://doc.rust-lang.org/nightly/core/hash/trait.Hash.html' title='core::hash::Hash'>Hash</a>&gt; <a class='struct' href='../sketchy/struct.HyperLogLog.html' title='sketchy::HyperLogLog'>HyperLogLog</a>&lt;E&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>(error: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>) -&gt; <a class='struct' href='../sketchy/struct.HyperLogLog.html' title='sketchy::HyperLogLog'>HyperLogLog</a>&lt;E&gt;</code></h4>
 <div class='docblock'><p>Returns a new <code>HyperLogLog</code> with the given margin of error.</p>
 </div><h4 id='method.insert' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.insert' class='fnname'>insert</a>(&amp;mut self, e: E)</code></h4>
 <div class='docblock'><p>Inserts an element of the multiset.</p>

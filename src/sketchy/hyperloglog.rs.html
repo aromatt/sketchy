@@ -249,10 +249,14 @@
 <span id="207">207</span>
 <span id="208">208</span>
 <span id="209">209</span>
+<span id="210">210</span>
+<span id="211">211</span>
+<span id="212">212</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>cmp</span>::{<span class='ident'>max</span>, <span class='ident'>Ordering</span>};
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>hash</span>::{<span class='ident'>Hash</span>,<span class='ident'>Hasher</span>,<span class='ident'>SipHasher</span>};
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>iter</span>::{<span class='ident'>repeat</span>,<span class='ident'>AdditiveIterator</span>};
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>marker</span>::<span class='ident'>PhantomData</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>num</span>::{<span class='ident'>Float</span>,<span class='ident'>Int</span>};
 
 <span class='doccomment'>/// A HyperLogLog allows for space-efficient estimates of the cardinality of</span>
@@ -274,9 +278,10 @@
     <span class='ident'>p</span>: <span class='ident'>usize</span>,
     <span class='ident'>msize</span>: <span class='ident'>u64</span>,
     <span class='ident'>m</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>u64</span><span class='op'>&gt;</span>,
+    <span class='ident'>marker</span>: <span class='ident'>PhantomData</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span>,
 }
 
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>E</span>: <span class='ident'>Hash</span><span class='op'>&lt;</span><span class='ident'>SipHasher</span><span class='op'>&gt;&gt;</span> <span class='ident'>HyperLogLog</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span> {
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>E</span>: <span class='ident'>Hash</span><span class='op'>&gt;</span> <span class='ident'>HyperLogLog</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span> {
     <span class='doccomment'>/// Returns a new `HyperLogLog` with the given margin of error.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>(<span class='ident'>error</span>: <span class='ident'>f64</span>) <span class='op'>-&gt;</span> <span class='ident'>HyperLogLog</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span> {
         <span class='kw'>let</span> <span class='ident'>p</span> <span class='op'>=</span> (<span class='number'>1.04</span> <span class='op'>/</span> <span class='ident'>error</span>).<span class='ident'>powi</span>(<span class='number'>2</span>).<span class='ident'>log2</span>().<span class='ident'>ceil</span>() <span class='kw'>as</span> <span class='ident'>usize</span>;
@@ -285,6 +290,7 @@
             <span class='ident'>p</span>: <span class='ident'>p</span>,
             <span class='ident'>msize</span>: <span class='number'>1</span> <span class='op'>&lt;&lt;</span> <span class='ident'>p</span>,
             <span class='ident'>m</span>: <span class='ident'>repeat</span>(<span class='number'>0</span>).<span class='ident'>take</span>(<span class='number'>1</span> <span class='op'>&lt;&lt;</span> <span class='ident'>p</span>).<span class='ident'>collect</span>(),
+            <span class='ident'>marker</span>: <span class='ident'>PhantomData</span>,
         }
     }
 

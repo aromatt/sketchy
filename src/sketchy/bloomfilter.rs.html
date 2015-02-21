@@ -200,9 +200,13 @@
 <span id="158">158</span>
 <span id="159">159</span>
 <span id="160">160</span>
+<span id="161">161</span>
+<span id="162">162</span>
+<span id="163">163</span>
 </pre><pre class='rust '>
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>Bitv</span>;
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>hash</span>::{<span class='ident'>Hash</span>,<span class='ident'>SipHasher</span>};
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>BitVec</span>;
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>hash</span>::<span class='ident'>Hash</span>;
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>marker</span>::<span class='ident'>PhantomData</span>;
 
 <span class='kw'>use</span> <span class='ident'>hash</span>::<span class='ident'>indexes</span>;
 
@@ -226,10 +230,11 @@
 <span class='doccomment'>/// ```</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>BloomFilter</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span> {
     <span class='ident'>k</span>: <span class='ident'>usize</span>,
-    <span class='ident'>bits</span>: <span class='ident'>Bitv</span>,
+    <span class='ident'>bits</span>: <span class='ident'>BitVec</span>,
+    <span class='ident'>marker</span>: <span class='ident'>PhantomData</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span>,
 }
 
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>E</span>: <span class='ident'>Hash</span><span class='op'>&lt;</span><span class='ident'>SipHasher</span><span class='op'>&gt;&gt;</span> <span class='ident'>BloomFilter</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span> {
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>E</span>: <span class='ident'>Hash</span><span class='op'>&gt;</span> <span class='ident'>BloomFilter</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span> {
     <span class='doccomment'>/// Creates a new `BloomFilter` instance, tuned for a population of `n`</span>
     <span class='doccomment'>/// elements with the given upper bound of the probability of false</span>
     <span class='doccomment'>/// positives.</span>
@@ -237,7 +242,8 @@
         <span class='kw'>let</span> (<span class='ident'>buckets</span>, <span class='ident'>k</span>) <span class='op'>=</span> <span class='ident'>best_buckets_and_k</span>(<span class='ident'>max_false_pos_prob</span>);
         <span class='ident'>BloomFilter</span>::<span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span> {
             <span class='ident'>k</span>: <span class='ident'>k</span>,
-            <span class='ident'>bits</span>: <span class='ident'>Bitv</span>::<span class='ident'>from_elem</span>(<span class='ident'>n</span> <span class='op'>*</span> <span class='ident'>buckets</span> <span class='op'>+</span> <span class='number'>20</span>, <span class='boolval'>false</span>),
+            <span class='ident'>bits</span>: <span class='ident'>BitVec</span>::<span class='ident'>from_elem</span>(<span class='ident'>n</span> <span class='op'>*</span> <span class='ident'>buckets</span> <span class='op'>+</span> <span class='number'>20</span>, <span class='boolval'>false</span>),
+            <span class='ident'>marker</span>: <span class='ident'>PhantomData</span>,
         }
     }
 
