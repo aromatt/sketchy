@@ -56,7 +56,7 @@ with the type of elements and the type of counter to use.</p>
 <span class='ident'>cms</span>.<span class='ident'>insert</span>(<span class='string'>&quot;one hundred&quot;</span>);
 <span class='ident'>cms</span>.<span class='ident'>insert_n</span>(<span class='string'>&quot;one hundred&quot;</span>, <span class='number'>100</span>);
 
-<span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;how many? {}&quot;</span>, <span class='ident'>cms</span>.<span class='ident'>estimate</span>(<span class='string'>&quot;one hundred&quot;</span>));
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>cms</span>.<span class='ident'>estimate</span>(<span class='kw-2'>&amp;</span><span class='string'>&quot;one hundred&quot;</span>), <span class='number'>101</span>);
 </pre>
 </div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;E: <a class='trait' href='http://doc.rust-lang.org/nightly/core/hash/trait.Hash.html' title='core::hash::Hash'>Hash</a>&gt; <a class='struct' href='../sketchy/struct.CountMinSketch.html' title='sketchy::CountMinSketch'>CountMinSketch</a>&lt;E&gt;</code></h3><div class='impl-items'><h4 id='method.with_confidence' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.with_confidence' class='fnname'>with_confidence</a>(epsilon: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>, confidence: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>) -&gt; <a class='struct' href='../sketchy/struct.CountMinSketch.html' title='sketchy::CountMinSketch'>CountMinSketch</a>&lt;E&gt;</code></h4>
 <div class='docblock'><p>Returns a CountMinSketch which provides frequency estimates where the
@@ -67,7 +67,7 @@ error is within a factor of epsilon with the given confidence.</p>
 <div class='docblock'><p>Adds a value to the sketch.</p>
 </div><h4 id='method.insert_n' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.insert_n' class='fnname'>insert_n</a>(&amp;mut self, e: E, n: <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>)</code></h4>
 <div class='docblock'><p>Adds multiple instances of a value to the sketch.</p>
-</div><h4 id='method.estimate' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.estimate' class='fnname'>estimate</a>(&amp;self, e: E) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a></code></h4>
+</div><h4 id='method.estimate' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.estimate' class='fnname'>estimate</a>(&amp;self, e: &amp;E) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a></code></h4>
 <div class='docblock'><p>Estimates the frequency of the given element.</p>
 </div><h4 id='method.estimate_mean' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.estimate_mean' class='fnname'>estimate_mean</a>(&amp;self, e: E, n: <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a></code></h4>
 <div class='docblock'><p>Estimates the frequency of the given element using the

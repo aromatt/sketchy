@@ -201,8 +201,6 @@
 <span id="159">159</span>
 <span id="160">160</span>
 <span id="161">161</span>
-<span id="162">162</span>
-<span id="163">163</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>BitVec</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>hash</span>::<span class='ident'>Hash</span>;
@@ -224,9 +222,7 @@
 <span class='doccomment'>/// filter.insert(&quot;one&quot;);</span>
 <span class='doccomment'>/// filter.insert(&quot;two&quot;);</span>
 <span class='doccomment'>///</span>
-<span class='doccomment'>/// if filter.contains(&quot;one&quot;) {</span>
-<span class='doccomment'>///     println!(&quot;yay&quot;);</span>
-<span class='doccomment'>/// }</span>
+<span class='doccomment'>/// assert!(filter.contains(&amp;&quot;one&quot;));</span>
 <span class='doccomment'>/// ```</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>BloomFilter</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span> {
     <span class='ident'>k</span>: <span class='ident'>usize</span>,
@@ -255,8 +251,8 @@
     }
 
     <span class='doccomment'>/// Returns `true` if the set probably contains the given element.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>contains</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>e</span>: <span class='ident'>E</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
-        <span class='kw'>for</span> <span class='ident'>i</span> <span class='kw'>in</span> <span class='ident'>indexes</span>(<span class='kw-2'>&amp;</span><span class='ident'>e</span>, <span class='self'>self</span>.<span class='ident'>bits</span>.<span class='ident'>len</span>()).<span class='ident'>take</span>(<span class='self'>self</span>.<span class='ident'>k</span>) {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>contains</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>e</span>: <span class='kw-2'>&amp;</span><span class='ident'>E</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
+        <span class='kw'>for</span> <span class='ident'>i</span> <span class='kw'>in</span> <span class='ident'>indexes</span>(<span class='ident'>e</span>, <span class='self'>self</span>.<span class='ident'>bits</span>.<span class='ident'>len</span>()).<span class='ident'>take</span>(<span class='self'>self</span>.<span class='ident'>k</span>) {
             <span class='kw'>if</span> <span class='op'>!</span><span class='self'>self</span>.<span class='ident'>bits</span>.<span class='ident'>get</span>(<span class='ident'>i</span>).<span class='ident'>unwrap</span>() {
                 <span class='kw'>return</span> <span class='boolval'>false</span>
             }
@@ -349,7 +345,7 @@
         <span class='ident'>bf</span>.<span class='ident'>insert</span>(<span class='number'>100</span>);
         <span class='ident'>bf</span>.<span class='ident'>insert</span>(<span class='number'>400</span>);
 
-        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>bf</span>.<span class='ident'>contains</span>(<span class='number'>100</span>), <span class='boolval'>true</span>);
+        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>bf</span>.<span class='ident'>contains</span>(<span class='kw-2'>&amp;</span><span class='number'>100</span>), <span class='boolval'>true</span>);
     }
 
     <span class='attribute'>#[<span class='ident'>test</span>]</span>
@@ -364,7 +360,7 @@
             <span class='macro'>panic</span><span class='macro'>!</span>(<span class='string'>&quot;merge made no changes&quot;</span>);
         }
 
-        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>bf1</span>.<span class='ident'>contains</span>(<span class='number'>400</span>), <span class='boolval'>true</span>);
+        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>bf1</span>.<span class='ident'>contains</span>(<span class='kw-2'>&amp;</span><span class='number'>400</span>), <span class='boolval'>true</span>);
     }
 }
 </pre>

@@ -206,7 +206,7 @@
 <span class='doccomment'>/// cms.insert(&quot;one hundred&quot;);</span>
 <span class='doccomment'>/// cms.insert_n(&quot;one hundred&quot;, 100);</span>
 <span class='doccomment'>///</span>
-<span class='doccomment'>/// println!(&quot;how many? {}&quot;, cms.estimate(&quot;one hundred&quot;));</span>
+<span class='doccomment'>/// assert_eq!(cms.estimate(&amp;&quot;one hundred&quot;), 101);</span>
 <span class='doccomment'>/// ```</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>CountMinSketch</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span> {
     <span class='ident'>depth</span>: <span class='ident'>usize</span>,
@@ -249,9 +249,9 @@
     }
 
     <span class='doccomment'>/// Estimates the frequency of the given element.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>estimate</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>e</span>: <span class='ident'>E</span>) <span class='op'>-&gt;</span> <span class='ident'>u64</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>estimate</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>e</span>: <span class='kw-2'>&amp;</span><span class='ident'>E</span>) <span class='op'>-&gt;</span> <span class='ident'>u64</span> {
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>max</span>: <span class='ident'>u64</span> <span class='op'>=</span> <span class='number'>0</span>;
-        <span class='kw'>for</span> (<span class='ident'>i</span>, <span class='ident'>idx</span>) <span class='kw'>in</span> <span class='ident'>indexes</span>(<span class='kw-2'>&amp;</span><span class='ident'>e</span>, <span class='self'>self</span>.<span class='ident'>width</span>).<span class='ident'>take</span>(<span class='self'>self</span>.<span class='ident'>depth</span>).<span class='ident'>enumerate</span>() {
+        <span class='kw'>for</span> (<span class='ident'>i</span>, <span class='ident'>idx</span>) <span class='kw'>in</span> <span class='ident'>indexes</span>(<span class='ident'>e</span>, <span class='self'>self</span>.<span class='ident'>width</span>).<span class='ident'>take</span>(<span class='self'>self</span>.<span class='ident'>depth</span>).<span class='ident'>enumerate</span>() {
             <span class='kw'>let</span> <span class='ident'>v</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>counters</span>[<span class='ident'>i</span>][<span class='ident'>idx</span>];
             <span class='kw'>if</span> <span class='ident'>v</span> <span class='op'>&gt;</span> <span class='ident'>max</span> {
                 <span class='ident'>max</span> <span class='op'>=</span> <span class='ident'>v</span>
@@ -304,7 +304,7 @@
         <span class='ident'>cms</span>.<span class='ident'>insert</span>(<span class='string'>&quot;one hundred&quot;</span>);
         <span class='ident'>cms</span>.<span class='ident'>insert_n</span>(<span class='string'>&quot;one hundred&quot;</span>, <span class='number'>100</span>);
 
-        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>cms</span>.<span class='ident'>estimate</span>(<span class='string'>&quot;one hundred&quot;</span>), <span class='number'>101</span>);
+        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>cms</span>.<span class='ident'>estimate</span>(<span class='kw-2'>&amp;</span><span class='string'>&quot;one hundred&quot;</span>), <span class='number'>101</span>);
     }
 
     <span class='attribute'>#[<span class='ident'>test</span>]</span>
@@ -316,8 +316,8 @@
         <span class='ident'>cms</span>.<span class='ident'>insert</span>(<span class='string'>&quot;four hundred&quot;</span>);
         <span class='ident'>cms</span>.<span class='ident'>insert</span>(<span class='string'>&quot;five hundred&quot;</span>);
 
-        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>cms</span>.<span class='ident'>estimate</span>(<span class='string'>&quot;one hundred&quot;</span>), <span class='number'>2</span>);
-        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>cms</span>.<span class='ident'>estimate_mean</span>(<span class='string'>&quot;one hundred&quot;</span>, <span class='number'>5</span>), <span class='number'>1</span>);
+        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>cms</span>.<span class='ident'>estimate</span>(<span class='kw-2'>&amp;</span><span class='string'>&quot;one hundred&quot;</span>), <span class='number'>2</span>);
+        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>cms</span>.<span class='ident'>estimate_mean</span>(<span class='kw-2'>&amp;</span><span class='string'>&quot;one hundred&quot;</span>, <span class='number'>5</span>), <span class='number'>1</span>);
     }
 
     <span class='attribute'>#[<span class='ident'>test</span>]</span>
@@ -330,7 +330,7 @@
 
         <span class='ident'>one</span>.<span class='ident'>merge</span>(<span class='kw-2'>&amp;</span><span class='ident'>two</span>);
 
-        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>one</span>.<span class='ident'>estimate</span>(<span class='string'>&quot;two hundred&quot;</span>), <span class='number'>1</span>);
+        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>one</span>.<span class='ident'>estimate</span>(<span class='kw-2'>&amp;</span><span class='string'>&quot;two hundred&quot;</span>), <span class='number'>1</span>);
     }
 }
 </pre>
