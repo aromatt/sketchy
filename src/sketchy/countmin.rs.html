@@ -188,6 +188,7 @@
 <span id="146">146</span>
 <span id="147">147</span>
 <span id="148">148</span>
+<span id="149">149</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>f64</span>::<span class='ident'>consts</span>::<span class='ident'>E</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>hash</span>::<span class='ident'>Hash</span>;
@@ -199,7 +200,7 @@
 
 <span class='doccomment'>/// A Count-Min Sketch is a probabilistic data structure which provides</span>
 <span class='doccomment'>/// estimates of the frequency of elements in a data stream. It is parameterized</span>
-<span class='doccomment'>/// with the type of elements and the type of counter to use.</span>
+<span class='doccomment'>/// with the type of elements.</span>
 <span class='doccomment'>///</span>
 <span class='doccomment'>/// ```</span>
 <span class='doccomment'>/// use sketchy::CountMinSketch;</span>
@@ -304,11 +305,12 @@
 
     <span class='attribute'>#[<span class='ident'>test</span>]</span>
     <span class='kw'>fn</span> <span class='ident'>insert_and_estimate</span>() {
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>cms</span> <span class='op'>=</span> <span class='ident'>CountMinSketch</span>::<span class='ident'>new</span>(<span class='number'>10</span>, <span class='number'>10</span>);
-        <span class='ident'>cms</span>.<span class='ident'>insert</span>(<span class='string'>&quot;one hundred&quot;</span>);
-        <span class='ident'>cms</span>.<span class='ident'>insert_n</span>(<span class='string'>&quot;one hundred&quot;</span>, <span class='number'>100</span>);
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>cms</span> <span class='op'>=</span> <span class='ident'>CountMinSketch</span>::<span class='ident'>new</span>(<span class='number'>100</span>, <span class='number'>100</span>);
+        <span class='kw'>for</span> <span class='ident'>i</span> <span class='kw'>in</span> <span class='number'>0</span>..<span class='number'>100</span> {
+            <span class='ident'>cms</span>.<span class='ident'>insert</span>(<span class='ident'>i</span>)
+        }
 
-        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>cms</span>.<span class='ident'>estimate</span>(<span class='kw-2'>&amp;</span><span class='string'>&quot;one hundred&quot;</span>), <span class='number'>101</span>);
+        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>cms</span>.<span class='ident'>estimate</span>(<span class='kw-2'>&amp;</span><span class='number'>20</span>), <span class='number'>1</span>);
     }
 
     <span class='attribute'>#[<span class='ident'>test</span>]</span>
