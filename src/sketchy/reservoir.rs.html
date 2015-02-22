@@ -113,6 +113,7 @@
 <span id="71">71</span>
 <span id="72">72</span>
 <span id="73">73</span>
+<span id="74">74</span>
 </pre><pre class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>rand</span>;
 
@@ -120,18 +121,19 @@
 <span class='kw'>use</span> <span class='self'>self</span>::<span class='ident'>rand</span>::<span class='ident'>Rng</span>;
 
 <span class='doccomment'>/// A reservoir sample maintains a sample of K elements, selected uniformly and</span>
-<span class='doccomment'>/// at random from a stream.</span>
+<span class='doccomment'>/// at random from a stream. This implementation uses [Vitter&#39;s Algorithm</span>
+<span class='doccomment'>/// R](http://www.cs.umd.edu/~samir/498/vitter.pdf) with thread-local PRNGs.</span>
 <span class='doccomment'>///</span>
 <span class='doccomment'>/// ```</span>
 <span class='doccomment'>/// use sketchy::ReservoirSample;</span>
 <span class='doccomment'>///</span>
 <span class='doccomment'>/// let mut res = ReservoirSample::new(2);</span>
 <span class='doccomment'>///</span>
-<span class='doccomment'>/// for v in [&quot;one&quot;, &quot;two&quot;, &quot;three&quot;].iter() {</span>
-<span class='doccomment'>///     res.insert(*v);</span>
+<span class='doccomment'>/// for v in vec![&quot;one&quot;, &quot;two&quot;, &quot;three&quot;] {</span>
+<span class='doccomment'>///     res.insert(v);</span>
 <span class='doccomment'>/// }</span>
 <span class='doccomment'>///</span>
-<span class='doccomment'>/// println!(&quot;elements: {:?}&quot;, res.elements());</span>
+<span class='doccomment'>/// assert_eq!(res.elements().len(), 2);</span>
 <span class='doccomment'>/// ```</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ReservoirSample</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span> {
     <span class='ident'>count</span>: <span class='ident'>usize</span>,

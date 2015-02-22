@@ -26,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='index.html'>sketchy</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.BloomFilter.html' title='A Bloom filter is a space-efficient probabilistic data structure that is used to test whether an element is a member of a set. False positive matches are possible, but false negatives are not.'>BloomFilter</a><a class='struct current' href='struct.CountMinSketch.html' title='A Count-Min Sketch is a probabilistic data structure which provides estimates of the frequency of elements in a data stream. It is parameterized with the type of elements.'>CountMinSketch</a><a class='struct ' href='struct.HyperLogLog.html' title='A HyperLogLog allows for space-efficient estimates of the cardinality of large multisets.'>HyperLogLog</a><a class='struct ' href='struct.ReservoirSample.html' title='A reservoir sample maintains a sample of K elements, selected uniformly and at random from a stream.'>ReservoirSample</a><a class='struct ' href='struct.TopK.html' title='A Top-K heap is a probabilistic data structure which uses a Count-Min Sketch to calculate the top K elements in a data stream with the highest frequency.'>TopK</a></div>
+        <p class='location'><a href='index.html'>sketchy</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.BloomFilter.html' title='A Bloom filter is a space-efficient probabilistic data structure that is used to test whether an element is a member of a set. False positive matches are possible, but false negatives are not.'>BloomFilter</a><a class='struct current' href='struct.CountMinSketch.html' title='A Count-Min Sketch is a probabilistic data structure which provides estimates of the frequency of elements in a data stream. It is parameterized with the type of elements.'>CountMinSketch</a><a class='struct ' href='struct.HyperLogLog.html' title='A HyperLogLog allows for space-efficient estimates of the cardinality of large multisets.'>HyperLogLog</a><a class='struct ' href='struct.ReservoirSample.html' title='A reservoir sample maintains a sample of K elements, selected uniformly and at random from a stream. This implementation uses [Vitter&#39;s Algorithm R](http://www.cs.umd.edu/~samir/498/vitter.pdf) with thread-local PRNGs.'>ReservoirSample</a><a class='struct ' href='struct.TopK.html' title='A Top-K heap is a probabilistic data structure which uses a Count-Min Sketch to calculate the top K elements in a data stream with the highest frequency.'>TopK</a></div>
     </section>
 
     <nav class="sub">
@@ -59,10 +59,10 @@ with the type of elements.</p>
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>cms</span>.<span class='ident'>estimate</span>(<span class='kw-2'>&amp;</span><span class='string'>&quot;one hundred&quot;</span>), <span class='number'>101</span>);
 </pre>
 </div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;E: <a class='trait' href='http://doc.rust-lang.org/nightly/core/hash/trait.Hash.html' title='core::hash::Hash'>Hash</a>&gt; <a class='struct' href='../sketchy/struct.CountMinSketch.html' title='sketchy::CountMinSketch'>CountMinSketch</a>&lt;E&gt;</code></h3><div class='impl-items'><h4 id='method.with_confidence' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.with_confidence' class='fnname'>with_confidence</a>(epsilon: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>, confidence: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>) -&gt; <a class='struct' href='../sketchy/struct.CountMinSketch.html' title='sketchy::CountMinSketch'>CountMinSketch</a>&lt;E&gt;</code></h4>
-<div class='docblock'><p>Returns a CountMinSketch which provides frequency estimates where the
+<div class='docblock'><p>Returns a <code>CountMinSketch</code> which provides frequency estimates where the
 error is within a factor of epsilon with the given confidence.</p>
 </div><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>(depth: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, width: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; <a class='struct' href='../sketchy/struct.CountMinSketch.html' title='sketchy::CountMinSketch'>CountMinSketch</a>&lt;E&gt;</code></h4>
-<div class='docblock'><p>Returns a CountMinSketch with the given depth and width.</p>
+<div class='docblock'><p>Returns a <code>CountMinSketch</code> with the given depth and width.</p>
 </div><h4 id='method.insert' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.insert' class='fnname'>insert</a>(&amp;mut self, e: E)</code></h4>
 <div class='docblock'><p>Adds a value to the sketch.</p>
 </div><h4 id='method.insert_n' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.insert_n' class='fnname'>insert_n</a>(&amp;mut self, e: E, n: <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>)</code></h4>
@@ -74,7 +74,7 @@ error is within a factor of epsilon with the given confidence.</p>
 <a href="http://webdocs.cs.ualberta.ca/%7Efandeng/paper/cmm.pdf">Count-Mean-Min algorithm</a>,
 which performs better on data sets which aren&#39;t highly skewed.</p>
 </div><h4 id='method.merge' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.merge' class='fnname'>merge</a>(&amp;mut self, v: &amp;<a class='struct' href='../sketchy/struct.CountMinSketch.html' title='sketchy::CountMinSketch'>CountMinSketch</a>&lt;E&gt;)</code></h4>
-<div class='docblock'><p>Merges another Count-Min Sketch into self.</p>
+<div class='docblock'><p>Merges another <code>CountMinSketch</code> into <code>self</code>.</p>
 </div></div></section>
     <section id='search' class="content hidden"></section>
 
