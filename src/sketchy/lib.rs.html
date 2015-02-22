@@ -56,6 +56,8 @@
 <span id="14">14</span>
 <span id="15">15</span>
 <span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Sketchy is a Rust library of probabilistic data structures.</span>
 
@@ -68,11 +70,13 @@
 <span class='kw'>mod</span> <span class='ident'>hash</span>;
 <span class='kw'>mod</span> <span class='ident'>hyperloglog</span>;
 <span class='kw'>mod</span> <span class='ident'>reservoir</span>;
+<span class='kw'>mod</span> <span class='ident'>topk</span>;
 
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>bloomfilter</span>::<span class='ident'>BloomFilter</span>;
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>countmin</span>::<span class='ident'>CountMinSketch</span>;
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>hyperloglog</span>::<span class='ident'>HyperLogLog</span>;
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>reservoir</span>::<span class='ident'>ReservoirSample</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>topk</span>::<span class='ident'>TopK</span>;
 </pre>
 </section>
     <section id='search' class="content hidden"></section>
