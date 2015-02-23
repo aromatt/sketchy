@@ -252,6 +252,7 @@
 <span id="210">210</span>
 <span id="211">211</span>
 <span id="212">212</span>
+<span id="213">213</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>cmp</span>::{<span class='ident'>max</span>, <span class='ident'>Ordering</span>};
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>hash</span>::{<span class='ident'>Hash</span>,<span class='ident'>Hasher</span>,<span class='ident'>SipHasher</span>};
@@ -271,7 +272,8 @@
 <span class='doccomment'>///     hll.insert(i);</span>
 <span class='doccomment'>/// }</span>
 <span class='doccomment'>///</span>
-<span class='doccomment'>/// println!(&quot;cardinality: {}&quot;, hll.cardinality());</span>
+<span class='doccomment'>/// assert!(hll.cardinality() &lt; 10500.0);</span>
+<span class='doccomment'>/// assert!(hll.cardinality() &gt;  9500.0);</span>
 <span class='doccomment'>/// ```</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>HyperLogLog</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span> {
     <span class='ident'>alpha</span>: <span class='ident'>f64</span>,
