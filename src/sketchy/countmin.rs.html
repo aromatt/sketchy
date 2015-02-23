@@ -186,6 +186,32 @@
 <span id="144">144</span>
 <span id="145">145</span>
 <span id="146">146</span>
+<span id="147">147</span>
+<span id="148">148</span>
+<span id="149">149</span>
+<span id="150">150</span>
+<span id="151">151</span>
+<span id="152">152</span>
+<span id="153">153</span>
+<span id="154">154</span>
+<span id="155">155</span>
+<span id="156">156</span>
+<span id="157">157</span>
+<span id="158">158</span>
+<span id="159">159</span>
+<span id="160">160</span>
+<span id="161">161</span>
+<span id="162">162</span>
+<span id="163">163</span>
+<span id="164">164</span>
+<span id="165">165</span>
+<span id="166">166</span>
+<span id="167">167</span>
+<span id="168">168</span>
+<span id="169">169</span>
+<span id="170">170</span>
+<span id="171">171</span>
+<span id="172">172</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>f64</span>::<span class='ident'>consts</span>::<span class='ident'>E</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>hash</span>::<span class='ident'>Hash</span>;
@@ -289,6 +315,11 @@
 <span class='kw'>mod</span> <span class='ident'>test</span> {
     <span class='kw'>use</span> <span class='ident'>super</span>::<span class='op'>*</span>;
 
+    <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>HashMap</span>;
+
+    <span class='kw'>use</span> <span class='ident'>rand</span>::<span class='ident'>thread_rng</span>;
+    <span class='kw'>use</span> <span class='ident'>rand</span>::<span class='ident'>distributions</span>::{<span class='ident'>IndependentSample</span>, <span class='ident'>Exp</span>};
+
     <span class='attribute'>#[<span class='ident'>test</span>]</span>
     <span class='kw'>fn</span> <span class='ident'>with_confidence</span>() {
         <span class='kw'>let</span> <span class='ident'>cms</span> <span class='op'>=</span> <span class='ident'>CountMinSketch</span>::<span class='op'>&lt;</span><span class='ident'>u8</span><span class='op'>&gt;</span>::<span class='ident'>with_confidence</span>(<span class='number'>0.0001</span>, <span class='number'>0.99</span>);
@@ -331,6 +362,27 @@
         <span class='ident'>one</span>.<span class='ident'>merge</span>(<span class='kw-2'>&amp;</span><span class='ident'>two</span>);
 
         <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>one</span>.<span class='ident'>estimate</span>(<span class='kw-2'>&amp;</span><span class='string'>&quot;two hundred&quot;</span>), <span class='number'>1</span>);
+    }
+
+    <span class='attribute'>#[<span class='ident'>test</span>]</span>
+    <span class='kw'>fn</span> <span class='ident'>accuracy</span>() {
+        <span class='kw'>let</span> <span class='ident'>exp</span> <span class='op'>=</span> <span class='ident'>Exp</span>::<span class='ident'>new</span>(<span class='number'>2.0</span>);
+        <span class='kw'>let</span> <span class='ident'>values</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>u32</span><span class='op'>&gt;</span> <span class='op'>=</span> (<span class='number'>0</span>..<span class='number'>1_000_000</span>).<span class='ident'>map</span>(<span class='op'>|</span>_<span class='op'>|</span> {
+            (<span class='ident'>exp</span>.<span class='ident'>ind_sample</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>thread_rng</span>()) <span class='op'>*</span> <span class='number'>1000.0</span>) <span class='kw'>as</span> <span class='ident'>u32</span>
+        }).<span class='ident'>collect</span>();
+
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>actual</span>: <span class='ident'>HashMap</span><span class='op'>&lt;</span><span class='ident'>u32</span>, <span class='ident'>u64</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>HashMap</span>::<span class='ident'>new</span>();
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>cms</span> <span class='op'>=</span> <span class='ident'>CountMinSketch</span>::<span class='ident'>with_confidence</span>(<span class='number'>0.0001</span>, <span class='number'>0.99</span>);
+
+        <span class='kw'>for</span> <span class='ident'>v</span> <span class='kw'>in</span> <span class='ident'>values</span>.<span class='ident'>iter</span>() {
+            <span class='kw'>let</span> <span class='ident'>n</span> <span class='op'>=</span> <span class='ident'>actual</span>.<span class='ident'>get</span>(<span class='ident'>v</span>).<span class='ident'>map_or</span>(<span class='number'>1</span>, <span class='op'>|</span><span class='ident'>x</span><span class='op'>|</span> <span class='ident'>x</span> <span class='op'>+</span> <span class='number'>1</span>);
+            <span class='ident'>actual</span>.<span class='ident'>insert</span>(<span class='op'>*</span><span class='ident'>v</span>, <span class='ident'>n</span>);
+            <span class='ident'>cms</span>.<span class='ident'>insert</span>(<span class='op'>*</span><span class='ident'>v</span>);
+        }
+
+        <span class='kw'>for</span> (<span class='ident'>v</span>, <span class='kw-2'>&amp;</span><span class='ident'>freq</span>) <span class='kw'>in</span> <span class='ident'>actual</span>.<span class='ident'>iter</span>() {
+            <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>cms</span>.<span class='ident'>estimate</span>(<span class='ident'>v</span>), <span class='ident'>freq</span>);
+        }
     }
 }
 </pre>
