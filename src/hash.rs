@@ -1,4 +1,4 @@
-use std::hash::{Hash,Hasher,SipHasher};
+use std::hash::{Hash,Hasher};
 use std::iter::Iterator;
 
 /// Returns an iterator of indexes for the given element with a maximum
@@ -7,13 +7,13 @@ use std::iter::Iterator;
 /// for multiple indexes to be created from only two full runs through
 /// SipHash2-4.
 pub fn indexes<E: Hash>(e: &E, max: usize) -> Index {
-    let mut h = SipHasher::new();
-    e.hash(&mut h);
-    let hash1 = h.finish();
+    let mut h1 = FnvHasher(0xcbf29ce484222325);
+    e.hash(&mut h1);
+    let hash1 = h1.finish();
 
-    h = SipHasher::new_with_keys(0, hash1);
-    e.hash(&mut h);
-    let hash2 = h.finish();
+    let mut h2 = FnvaHasher(0xcbf29ce484222325);
+    e.hash(&mut h2);
+    let hash2 = h2.finish();
 
     Index {
         h1: hash1,
@@ -40,6 +40,34 @@ impl Iterator for Index {
     }
 }
 
+struct FnvHasher(u64);
+
+impl Hasher for FnvHasher {
+    fn write(&mut self, bytes: &[u8]) {
+        let FnvHasher(mut hash) = *self;
+        for byte in bytes {
+            hash = hash * 0x100000001b3;
+            hash = hash ^ (*byte as u64);
+        }
+        *self = FnvHasher(hash);
+    }
+    fn finish(&self) -> u64 { self.0 }
+}
+
+struct FnvaHasher(u64);
+
+impl Hasher for FnvaHasher {
+    fn write(&mut self, bytes: &[u8]) {
+        let FnvaHasher(mut hash) = *self;
+        for byte in bytes {
+            hash = hash ^ (*byte as u64);
+            hash = hash * 0x100000001b3;
+        }
+        *self = FnvaHasher(hash);
+    }
+    fn finish(&self) -> u64 { self.0 }
+}
+
 #[cfg(test)]
 mod test {
     use super::*;
@@ -48,6 +76,6 @@ mod test {
     fn double_hashing() {
         let v: Vec<usize> = indexes(&"whee", 100).take(10).collect();
 
-        assert_eq!(v, vec![17, 92, 83, 58, 33, 8, 99, 74, 49, 40]);
+        assert_eq!(v, vec![2, 27, 52, 77, 86, 11, 36, 61, 86, 95]);
     }
 }
