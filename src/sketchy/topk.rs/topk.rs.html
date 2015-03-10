@@ -133,14 +133,13 @@
 <span id="91">91</span>
 <span id="92">92</span>
 <span id="93">93</span>
-<span id="94">94</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>HashSet</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>hash</span>::<span class='ident'>Hash</span>;
 <span class='kw'>use</span> <span class='ident'>countmin</span>::<span class='ident'>CountMinSketch</span>;
 
-<span class='doccomment'>/// A Top-K heap is a probabilistic data structure which uses a Count-Min Sketch</span>
-<span class='doccomment'>/// to calculate the top K elements in a data stream with the highest frequency.</span>
+<span class='doccomment'>/// A Top-K heap is a probabilistic data structure which uses a Count-Min Sketch to calculate the</span>
+<span class='doccomment'>/// top K elements in a data stream with the highest frequency.</span>
 <span class='doccomment'>///</span>
 <span class='doccomment'>/// ```</span>
 <span class='doccomment'>/// use sketchy::{CountMinSketch, TopK};</span>
@@ -164,8 +163,8 @@
 }
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>E</span>: <span class='ident'>Eq</span> <span class='op'>+</span> <span class='ident'>Hash</span> <span class='op'>+</span> <span class='ident'>Copy</span><span class='op'>&gt;</span> <span class='ident'>TopK</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span> {
-    <span class='doccomment'>/// Returns a TopK which will track `k` elements with at least `min`</span>
-    <span class='doccomment'>/// frequency (`(0,1)`) using the given CountMinSketch.</span>
+    <span class='doccomment'>/// Returns a TopK which will track `k` elements with at least `min` frequency (`(0,1)`) using</span>
+    <span class='doccomment'>/// the given CountMinSketch.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>(<span class='ident'>k</span>: <span class='ident'>usize</span>, <span class='ident'>min</span>: <span class='ident'>f64</span>, <span class='ident'>cms</span>: <span class='ident'>CountMinSketch</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>TopK</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span> {
         <span class='ident'>TopK</span>::<span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span> {
             <span class='ident'>k</span>: <span class='ident'>k</span>,
@@ -196,9 +195,8 @@
         <span class='ident'>v</span>.<span class='ident'>into_iter</span>().<span class='ident'>take</span>(<span class='self'>self</span>.<span class='ident'>k</span>).<span class='ident'>collect</span>()
     }
 
-    <span class='doccomment'>/// Shrinks the heap as much as possible while still retaining the top K</span>
-    <span class='doccomment'>/// elements. Should be called periodically to filter out false positives as</span>
-    <span class='doccomment'>/// the data stream changes.</span>
+    <span class='doccomment'>/// Shrinks the heap as much as possible while still retaining the top K elements. Should be</span>
+    <span class='doccomment'>/// called periodically to filter out false positives as the data stream changes.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>shrink_to_fit</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) {
         <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>elements</span>.<span class='ident'>len</span>() <span class='op'>&gt;</span> <span class='self'>self</span>.<span class='ident'>k</span> {
             <span class='self'>self</span>.<span class='ident'>elements</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>elements</span>().<span class='ident'>into_iter</span>().<span class='ident'>collect</span>();

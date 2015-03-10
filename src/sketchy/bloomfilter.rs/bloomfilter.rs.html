@@ -199,8 +199,6 @@
 <span id="157">157</span>
 <span id="158">158</span>
 <span id="159">159</span>
-<span id="160">160</span>
-<span id="161">161</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>BitVec</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>hash</span>::<span class='ident'>Hash</span>;
@@ -208,9 +206,8 @@
 
 <span class='kw'>use</span> <span class='ident'>hash</span>::<span class='ident'>indexes</span>;
 
-<span class='doccomment'>/// A Bloom filter is a space-efficient probabilistic data structure that is</span>
-<span class='doccomment'>/// used to test whether an element is a member of a set. False positive matches</span>
-<span class='doccomment'>/// are possible, but false negatives are not.</span>
+<span class='doccomment'>/// A Bloom filter is a space-efficient probabilistic data structure that is used to test whether an</span>
+<span class='doccomment'>/// element is a member of a set. False positive matches are possible, but false negatives are not.</span>
 <span class='doccomment'>///</span>
 <span class='doccomment'>/// ```</span>
 <span class='doccomment'>/// use sketchy::BloomFilter;</span>
@@ -231,9 +228,8 @@
 }
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>E</span>: <span class='ident'>Hash</span><span class='op'>&gt;</span> <span class='ident'>BloomFilter</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span> {
-    <span class='doccomment'>/// Creates a new `BloomFilter` instance, tuned for a population of `n`</span>
-    <span class='doccomment'>/// elements with the given upper bound of the probability of false</span>
-    <span class='doccomment'>/// positives.</span>
+    <span class='doccomment'>/// Creates a new `BloomFilter` instance, tuned for a population of `n` elements with the given</span>
+    <span class='doccomment'>/// upper bound of the probability of false positives.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>(<span class='ident'>n</span>: <span class='ident'>usize</span>, <span class='ident'>max_false_pos_prob</span>: <span class='ident'>f64</span>) <span class='op'>-&gt;</span> <span class='ident'>BloomFilter</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span> {
         <span class='kw'>let</span> (<span class='ident'>buckets</span>, <span class='ident'>k</span>) <span class='op'>=</span> <span class='ident'>best_buckets_and_k</span>(<span class='ident'>max_false_pos_prob</span>);
         <span class='ident'>BloomFilter</span>::<span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span> {
@@ -260,8 +256,8 @@
         <span class='boolval'>true</span>
     }
 
-    <span class='doccomment'>/// Merges the contents of the given `BloomFilter` into `self`. Both</span>
-    <span class='doccomment'>/// filters must have the same parameters. Returns true if self changed.</span>
+    <span class='doccomment'>/// Merges the contents of the given `BloomFilter` into `self`. Both filters must have the same</span>
+    <span class='doccomment'>/// parameters. Returns true if self changed.</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// # Panics</span>
     <span class='doccomment'>///</span>
@@ -290,8 +286,8 @@
         <span class='ident'>k</span> <span class='op'>=</span> <span class='ident'>OPT_K</span>[<span class='ident'>buckets</span>];
     }
 
-    <span class='comment'>// Now that the number of buckets is sufficient, see if we can relax K</span>
-    <span class='comment'>// without losing too much precision.</span>
+    <span class='comment'>// Now that the number of buckets is sufficient, see if we can relax K without losing too much</span>
+    <span class='comment'>// precision.</span>
     <span class='kw'>while</span> <span class='ident'>PROBS</span>[<span class='ident'>buckets</span>][<span class='ident'>k</span><span class='op'>-</span><span class='number'>1</span>] <span class='op'>&lt;=</span> <span class='ident'>max_false_pos_prob</span> {
         <span class='ident'>k</span> <span class='op'>-=</span> <span class='number'>1</span>;
     }

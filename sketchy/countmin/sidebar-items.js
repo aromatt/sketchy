@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["CountMinSketch","A Count-Min Sketch is a probabilistic data structure which provides estimates of the frequency of elements in a data stream. It is parameterized with the type of elements."]]});

@@ -26,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='index.html'>sketchy</a></p><div class='block struct'><h2>Structs</h2><a class='struct current' href='struct.BloomFilter.html' title='A Bloom filter is a space-efficient probabilistic data structure that is used to test whether an element is a member of a set. False positive matches are possible, but false negatives are not.'>BloomFilter</a><a class='struct ' href='struct.CountMinSketch.html' title='A Count-Min Sketch is a probabilistic data structure which provides estimates of the frequency of elements in a data stream. It is parameterized with the type of elements.'>CountMinSketch</a><a class='struct ' href='struct.HyperLogLog.html' title='A HyperLogLog allows for space-efficient estimates of the cardinality of large multisets.'>HyperLogLog</a><a class='struct ' href='struct.ReservoirSample.html' title='A reservoir sample maintains a sample of K elements, selected uniformly and at random from a stream. This implementation uses [Vitter&#39;s Algorithm R](http://www.cs.umd.edu/~samir/498/vitter.pdf) with thread-local PRNGs.'>ReservoirSample</a><a class='struct ' href='struct.TopK.html' title='A Top-K heap is a probabilistic data structure which uses a Count-Min Sketch to calculate the top K elements in a data stream with the highest frequency.'>TopK</a></div>
+        <p class='location'><a href='index.html'>sketchy</a></p><script>window.sidebarCurrent = {name: 'BloomFilter', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </section>
 
     <nav class="sub">
@@ -43,12 +43,11 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>sketchy</a>::<wbr><a class='struct' href=''>BloomFilter</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-11' href='../src/sketchy/bloomfilter.rs.html#23-27'>[src]</a></span></h1>
+        </span><a id='src-11' href='../src/sketchy/bloomfilter.rs.html#22-26'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct BloomFilter&lt;E&gt; {
     // some fields omitted
-}</pre><div class='docblock'><p>A Bloom filter is a space-efficient probabilistic data structure that is
-used to test whether an element is a member of a set. False positive matches
-are possible, but false negatives are not.</p>
+}</pre><div class='docblock'><p>A Bloom filter is a space-efficient probabilistic data structure that is used to test whether an
+element is a member of a set. False positive matches are possible, but false negatives are not.</p>
 <pre id='rust-example-rendered' class='rust '>
 <span class='kw'>use</span> <span class='ident'>sketchy</span>::<span class='ident'>BloomFilter</span>;
 
@@ -62,16 +61,15 @@ are possible, but false negatives are not.</p>
 <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>filter</span>.<span class='ident'>contains</span>(<span class='kw-2'>&amp;</span><span class='string'>&quot;one&quot;</span>));
 </pre>
 </div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;E: <a class='trait' href='http://doc.rust-lang.org/nightly/core/hash/trait.Hash.html' title='core::hash::Hash'>Hash</a>&gt; <a class='struct' href='../sketchy/struct.BloomFilter.html' title='sketchy::BloomFilter'>BloomFilter</a>&lt;E&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>(n: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, max_false_pos_prob: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>) -&gt; <a class='struct' href='../sketchy/struct.BloomFilter.html' title='sketchy::BloomFilter'>BloomFilter</a>&lt;E&gt;</code></h4>
-<div class='docblock'><p>Creates a new <code>BloomFilter</code> instance, tuned for a population of <code>n</code>
-elements with the given upper bound of the probability of false
-positives.</p>
+<div class='docblock'><p>Creates a new <code>BloomFilter</code> instance, tuned for a population of <code>n</code> elements with the given
+upper bound of the probability of false positives.</p>
 </div><h4 id='method.insert' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.insert' class='fnname'>insert</a>(&amp;mut self, e: E)</code></h4>
 <div class='docblock'><p>Adds a value to the set.</p>
 </div><h4 id='method.contains' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.contains' class='fnname'>contains</a>(&amp;mut self, e: &amp;E) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
 <div class='docblock'><p>Returns <code>true</code> if the set probably contains the given element.</p>
 </div><h4 id='method.merge' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.merge' class='fnname'>merge</a>(&amp;mut self, other: &amp;<a class='struct' href='../sketchy/struct.BloomFilter.html' title='sketchy::BloomFilter'>BloomFilter</a>&lt;E&gt;) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
-<div class='docblock'><p>Merges the contents of the given <code>BloomFilter</code> into <code>self</code>. Both
-filters must have the same parameters. Returns true if self changed.</p>
+<div class='docblock'><p>Merges the contents of the given <code>BloomFilter</code> into <code>self</code>. Both filters must have the same
+parameters. Returns true if self changed.</p>
 
 <h1 id="panics" class='section-header'><a
                            href="#panics">Panics</a></h1>

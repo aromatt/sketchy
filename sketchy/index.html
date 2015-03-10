@@ -26,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'></p>
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'sketchy', ty: 'mod', relpath: '../'};</script>
     </section>
 
     <nav class="sub">
@@ -43,43 +43,39 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>sketchy</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/sketchy/lib.rs.html#1-20'>[src]</a></span></h1>
-<div class='docblock'><p>Sketchy is a Rust library of probabilistic data structures, useful for
-measuring large or unbounded streams of data by trading some accuracy for a
-whole lot of efficiency.</p>
+        </span><a id='src-0' href='../src/sketchy/lib.rs.html#1-19'>[src]</a></span></h1>
+<div class='docblock'><p>Sketchy is a Rust library of probabilistic data structures, useful for measuring large or
+unbounded streams of data by trading some accuracy for a whole lot of efficiency.</p>
 </div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.BloomFilter.html'
                                title='sketchy::BloomFilter'>BloomFilter</a></td>
-                        <td class='docblock short'><p>A Bloom filter is a space-efficient probabilistic data structure that is
-used to test whether an element is a member of a set. False positive matches
-are possible, but false negatives are not.</p>
+                        <td class='docblock short'><p>A Bloom filter is a space-efficient probabilistic data structure that is used to test whether an
+element is a member of a set. False positive matches are possible, but false negatives are not.</p>
 </td>
                     </tr>
                 
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.CountMinSketch.html'
                                title='sketchy::CountMinSketch'>CountMinSketch</a></td>
-                        <td class='docblock short'><p>A Count-Min Sketch is a probabilistic data structure which provides
-estimates of the frequency of elements in a data stream. It is parameterized
-with the type of elements.</p>
+                        <td class='docblock short'><p>A Count-Min Sketch is a probabilistic data structure which provides estimates of the frequency
+of elements in a data stream. It is parameterized with the type of elements.</p>
 </td>
                     </tr>
                 
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.HyperLogLog.html'
                                title='sketchy::HyperLogLog'>HyperLogLog</a></td>
-                        <td class='docblock short'><p>A HyperLogLog allows for space-efficient estimates of the cardinality of
-large multisets.</p>
+                        <td class='docblock short'><p>A HyperLogLog allows for space-efficient estimates of the cardinality of large multisets.</p>
 </td>
                     </tr>
                 
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ReservoirSample.html'
                                title='sketchy::ReservoirSample'>ReservoirSample</a></td>
-                        <td class='docblock short'><p>A reservoir sample maintains a sample of K elements, selected uniformly and
-at random from a stream. This implementation uses <a href="http://www.cs.umd.edu/%7Esamir/498/vitter.pdf">Vitter&#39;s Algorithm
+                        <td class='docblock short'><p>A reservoir sample maintains a sample of K elements, selected uniformly and at random from a
+stream. This implementation uses <a href="http://www.cs.umd.edu/%7Esamir/498/vitter.pdf">Vitter&#39;s Algorithm
 R</a> with thread-local PRNGs.</p>
 </td>
                     </tr>
@@ -87,8 +83,8 @@ R</a> with thread-local PRNGs.</p>
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TopK.html'
                                title='sketchy::TopK'>TopK</a></td>
-                        <td class='docblock short'><p>A Top-K heap is a probabilistic data structure which uses a Count-Min Sketch
-to calculate the top K elements in a data stream with the highest frequency.</p>
+                        <td class='docblock short'><p>A Top-K heap is a probabilistic data structure which uses a Count-Min Sketch to calculate the
+top K elements in a data stream with the highest frequency.</p>
 </td>
                     </tr>
                 </table></section>
