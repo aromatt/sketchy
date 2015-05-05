@@ -254,11 +254,13 @@
 <span id="212">212</span>
 <span id="213">213</span>
 <span id="214">214</span>
+<span id="215">215</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>cmp</span>::{<span class='ident'>max</span>, <span class='ident'>Ordering</span>};
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>hash</span>::{<span class='ident'>Hash</span>,<span class='ident'>Hasher</span>,<span class='ident'>SipHasher</span>};
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>marker</span>::<span class='ident'>PhantomData</span>;
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>num</span>::{<span class='ident'>Float</span>,<span class='ident'>Int</span>};
+
+<span class='kw'>use</span> <span class='ident'>num</span>::<span class='ident'>Float</span>;
 
 <span class='doccomment'>/// A HyperLogLog allows for space-efficient estimates of the cardinality of large multisets.</span>
 <span class='doccomment'>///</span>

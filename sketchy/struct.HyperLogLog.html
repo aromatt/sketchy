@@ -41,9 +41,9 @@
     </nav>
 
     <section id='main' class="content struct">
-<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>sketchy</a>::<wbr><a class='struct' href=''>HyperLogLog</a><wbr></span><span class='out-of-band'><span id='render-detail'>
-            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-1091' href='../src/sketchy/hyperloglog.rs.html#20-26'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>sketchy</a>::<wbr><a class='struct' href=''>HyperLogLog</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="#" title="collapse all docs">[&minus;]</a>
+        </span><a id='src-1088' class='srclink' href='../src/sketchy/hyperloglog.rs.html#21-27' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct HyperLogLog&lt;E&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>A HyperLogLog allows for space-efficient estimates of the cardinality of large multisets.</p>
@@ -59,16 +59,16 @@
 <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>hll</span>.<span class='ident'>cardinality</span>() <span class='op'>&lt;</span> <span class='number'>10500.0</span>);
 <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>hll</span>.<span class='ident'>cardinality</span>() <span class='op'>&gt;</span>  <span class='number'>9500.0</span>);
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;E: <a class='trait' href='http://doc.rust-lang.org/nightly/core/hash/trait.Hash.html' title='core::hash::Hash'>Hash</a>&gt; <a class='struct' href='../sketchy/struct.HyperLogLog.html' title='sketchy::HyperLogLog'>HyperLogLog</a>&lt;E&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>(error: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>) -&gt; <a class='struct' href='../sketchy/struct.HyperLogLog.html' title='sketchy::HyperLogLog'>HyperLogLog</a>&lt;E&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;E: <a class='trait' href='http://doc.rust-lang.org/nightly/core/hash/trait.Hash.html' title='core::hash::Hash'>Hash</a>&gt; <a class='struct' href='../sketchy/struct.HyperLogLog.html' title='sketchy::HyperLogLog'>HyperLogLog</a>&lt;E&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(error: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>) -&gt; <a class='struct' href='../sketchy/struct.HyperLogLog.html' title='sketchy::HyperLogLog'>HyperLogLog</a>&lt;E&gt;</code></h4>
 <div class='docblock'><p>Returns a new <code>HyperLogLog</code> with the given margin of error.</p>
-</div><h4 id='method.insert' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.insert' class='fnname'>insert</a>(&amp;mut self, e: E)</code></h4>
+</div><h4 id='method.insert' class='method'><code>fn <a href='#method.insert' class='fnname'>insert</a>(&amp;mut self, e: E)</code></h4>
 <div class='docblock'><p>Inserts an element of the multiset.</p>
-</div><h4 id='method.insert_hashed' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.insert_hashed' class='fnname'>insert_hashed</a>(&amp;mut self, x: <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>)</code></h4>
+</div><h4 id='method.insert_hashed' class='method'><code>fn <a href='#method.insert_hashed' class='fnname'>insert_hashed</a>(&amp;mut self, x: <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>)</code></h4>
 <div class='docblock'><p>Inserts the hash of an element of the multiset.</p>
 
 <p>Use this only when you have firm opinions about hash algorithms (i.e., SipHash2-4 is too
 slow for you) or you&#39;re working with data which is already hashed. Otherwise, use <code>insert</code>.</p>
-</div><h4 id='method.cardinality' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.cardinality' class='fnname'>cardinality</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a></code></h4>
+</div><h4 id='method.cardinality' class='method'><code>fn <a href='#method.cardinality' class='fnname'>cardinality</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a></code></h4>
 <div class='docblock'><p>Returns an estimate of the cardinality of the multiset that was inserted.</p>
 </div></div></section>
     <section id='search' class="content hidden"></section>

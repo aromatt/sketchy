@@ -41,9 +41,9 @@
     </nav>
 
     <section id='main' class="content struct">
-<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>sketchy</a>::<wbr><a class='struct' href=''>TopK</a><wbr></span><span class='out-of-band'><span id='render-detail'>
-            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-7928' href='../src/sketchy/topk.rs.html#21-27'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>sketchy</a>::<wbr><a class='struct' href=''>TopK</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="#" title="collapse all docs">[&minus;]</a>
+        </span><a id='src-7921' class='srclink' href='../src/sketchy/topk.rs.html#21-27' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct TopK&lt;E&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>A Top-K heap is a probabilistic data structure which uses a Count-Min Sketch to calculate the
@@ -61,14 +61,14 @@ top K elements in a data stream with the highest frequency.</p>
 
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>topk</span>.<span class='ident'>elements</span>(), <span class='macro'>vec</span><span class='macro'>!</span>[<span class='op'>-</span><span class='number'>100</span>]);
 </pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;E: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a> + <a class='trait' href='http://doc.rust-lang.org/nightly/core/hash/trait.Hash.html' title='core::hash::Hash'>Hash</a> + <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a>&gt; <a class='struct' href='../sketchy/struct.TopK.html' title='sketchy::TopK'>TopK</a>&lt;E&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>(k: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, min: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>, cms: <a class='struct' href='../sketchy/struct.CountMinSketch.html' title='sketchy::CountMinSketch'>CountMinSketch</a>&lt;E&gt;) -&gt; <a class='struct' href='../sketchy/struct.TopK.html' title='sketchy::TopK'>TopK</a>&lt;E&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;E: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a> + <a class='trait' href='http://doc.rust-lang.org/nightly/core/hash/trait.Hash.html' title='core::hash::Hash'>Hash</a> + <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a>&gt; <a class='struct' href='../sketchy/struct.TopK.html' title='sketchy::TopK'>TopK</a>&lt;E&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(k: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, min: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>, cms: <a class='struct' href='../sketchy/struct.CountMinSketch.html' title='sketchy::CountMinSketch'>CountMinSketch</a>&lt;E&gt;) -&gt; <a class='struct' href='../sketchy/struct.TopK.html' title='sketchy::TopK'>TopK</a>&lt;E&gt;</code></h4>
 <div class='docblock'><p>Returns a TopK which will track <code>k</code> elements with at least <code>min</code> frequency (<code>(0,1)</code>) using
 the given CountMinSketch.</p>
-</div><h4 id='method.insert' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.insert' class='fnname'>insert</a>(&amp;mut self, e: E)</code></h4>
+</div><h4 id='method.insert' class='method'><code>fn <a href='#method.insert' class='fnname'>insert</a>(&amp;mut self, e: E)</code></h4>
 <div class='docblock'><p>Adds a value to the heap.</p>
-</div><h4 id='method.elements' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.elements' class='fnname'>elements</a>(&amp;mut self) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;E&gt;</code></h4>
+</div><h4 id='method.elements' class='method'><code>fn <a href='#method.elements' class='fnname'>elements</a>(&amp;mut self) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;E&gt;</code></h4>
 <div class='docblock'><p>Returns a vector of the top K elements, in reverse order of frequency.</p>
-</div><h4 id='method.shrink_to_fit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.shrink_to_fit' class='fnname'>shrink_to_fit</a>(&amp;mut self)</code></h4>
+</div><h4 id='method.shrink_to_fit' class='method'><code>fn <a href='#method.shrink_to_fit' class='fnname'>shrink_to_fit</a>(&amp;mut self)</code></h4>
 <div class='docblock'><p>Shrinks the heap as much as possible while still retaining the top K elements. Should be
 called periodically to filter out false positives as the data stream changes.</p>
 </div></div></section>
