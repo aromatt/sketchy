@@ -24,17 +24,17 @@
 
     
 
-    <section class="sidebar">
+    <nav class="sidebar">
         
         <p class='location'><a href='index.html'>sketchy</a></p><script>window.sidebarCurrent = {name: 'CountMinSketch', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
-    </section>
+    </nav>
 
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
                 <input class="search-input" name="search"
                        autocomplete="off"
-                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
                        type="search">
             </div>
         </form>
@@ -42,33 +42,34 @@
 
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>sketchy</a>::<wbr><a class='struct' href=''>CountMinSketch</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="toggle-all-docs" href="#" title="collapse all docs">[&minus;]</a>
-        </span><a id='src-624' class='srclink' href='../src/sketchy/countmin.rs.html#19-24' title='goto source code'>[src]</a></span></h1>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-62' class='srclink' href='../src/sketchy/countmin.rs.html#19-24' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct CountMinSketch&lt;E&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>A Count-Min Sketch is a probabilistic data structure which provides estimates of the frequency
 of elements in a data stream. It is parameterized with the type of elements.</p>
-<pre id='rust-example-rendered' class='rust '>
+<pre class='rust rust-example-rendered'>
 <span class='kw'>use</span> <span class='ident'>sketchy</span>::<span class='ident'>CountMinSketch</span>;
 
 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>cms</span> <span class='op'>=</span> <span class='ident'>CountMinSketch</span>::<span class='ident'>with_confidence</span>(<span class='number'>0.001</span>, <span class='number'>0.99</span>);
 <span class='ident'>cms</span>.<span class='ident'>insert</span>(<span class='string'>&quot;one hundred&quot;</span>);
 <span class='ident'>cms</span>.<span class='ident'>insert_n</span>(<span class='string'>&quot;one hundred&quot;</span>, <span class='number'>100</span>);
 
-<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>cms</span>.<span class='ident'>estimate</span>(<span class='kw-2'>&amp;</span><span class='string'>&quot;one hundred&quot;</span>), <span class='number'>101</span>);
-</pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;E: <a class='trait' href='http://doc.rust-lang.org/nightly/core/hash/trait.Hash.html' title='core::hash::Hash'>Hash</a>&gt; <a class='struct' href='../sketchy/struct.CountMinSketch.html' title='sketchy::CountMinSketch'>CountMinSketch</a>&lt;E&gt;</code></h3><div class='impl-items'><h4 id='method.with_confidence' class='method'><code>fn <a href='#method.with_confidence' class='fnname'>with_confidence</a>(epsilon: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>, confidence: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>) -&gt; <a class='struct' href='../sketchy/struct.CountMinSketch.html' title='sketchy::CountMinSketch'>CountMinSketch</a>&lt;E&gt;</code></h4>
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>cms</span>.<span class='ident'>estimate</span>(<span class='kw-2'>&amp;</span><span class='string'>&quot;one hundred&quot;</span>), <span class='number'>101</span>);</pre>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;E: <a class='trait' href='https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html' title='core::hash::Hash'>Hash</a>&gt; <a class='struct' href='../sketchy/struct.CountMinSketch.html' title='sketchy::CountMinSketch'>CountMinSketch</a>&lt;E&gt;</code></h3><div class='impl-items'><h4 id='method.with_confidence' class='method'><code>fn <a href='#method.with_confidence' class='fnname'>with_confidence</a>(epsilon: <a href='https://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>, confidence: <a href='https://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>) -&gt; <a class='struct' href='../sketchy/struct.CountMinSketch.html' title='sketchy::CountMinSketch'>CountMinSketch</a>&lt;E&gt;</code></h4>
 <div class='docblock'><p>Returns a <code>CountMinSketch</code> which provides frequency estimates where the error is within a
 factor of epsilon with the given confidence.</p>
-</div><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(depth: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, width: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; <a class='struct' href='../sketchy/struct.CountMinSketch.html' title='sketchy::CountMinSketch'>CountMinSketch</a>&lt;E&gt;</code></h4>
+</div><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(depth: <a href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, width: <a href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; <a class='struct' href='../sketchy/struct.CountMinSketch.html' title='sketchy::CountMinSketch'>CountMinSketch</a>&lt;E&gt;</code></h4>
 <div class='docblock'><p>Returns a <code>CountMinSketch</code> with the given depth and width.</p>
 </div><h4 id='method.insert' class='method'><code>fn <a href='#method.insert' class='fnname'>insert</a>(&amp;mut self, e: E)</code></h4>
 <div class='docblock'><p>Adds a value to the sketch.</p>
-</div><h4 id='method.insert_n' class='method'><code>fn <a href='#method.insert_n' class='fnname'>insert_n</a>(&amp;mut self, e: E, n: <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>)</code></h4>
+</div><h4 id='method.insert_n' class='method'><code>fn <a href='#method.insert_n' class='fnname'>insert_n</a>(&amp;mut self, e: E, n: <a href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>)</code></h4>
 <div class='docblock'><p>Adds multiple instances of a value to the sketch.</p>
-</div><h4 id='method.estimate' class='method'><code>fn <a href='#method.estimate' class='fnname'>estimate</a>(&amp;self, e: &amp;E) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a></code></h4>
+</div><h4 id='method.estimate' class='method'><code>fn <a href='#method.estimate' class='fnname'>estimate</a>(&amp;self, e: &amp;E) -&gt; <a href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a></code></h4>
 <div class='docblock'><p>Estimates the frequency of the given element.</p>
-</div><h4 id='method.estimate_mean' class='method'><code>fn <a href='#method.estimate_mean' class='fnname'>estimate_mean</a>(&amp;self, e: E, n: <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a></code></h4>
+</div><h4 id='method.estimate_mean' class='method'><code>fn <a href='#method.estimate_mean' class='fnname'>estimate_mean</a>(&amp;self, e: E, n: <a href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>) -&gt; <a href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a></code></h4>
 <div class='docblock'><p>Estimates the frequency of the given element using the <a href="http://webdocs.cs.ualberta.ca/%7Efandeng/paper/cmm.pdf">Count-Mean-Min
 algorithm</a>, which performs better on
 data sets which aren&#39;t highly skewed.</p>
@@ -79,36 +80,49 @@ data sets which aren&#39;t highly skewed.</p>
 
     <section class="footer"></section>
 
-    <div id="help" class="hidden">
-        <div class="shortcuts">
-            <h1>Keyboard shortcuts</h1>
-            <dl>
-                <dt>?</dt>
-                <dd>Show this help dialog</dd>
-                <dt>S</dt>
-                <dd>Focus the search field</dd>
-                <dt>&larrb;</dt>
-                <dd>Move up in search results</dd>
-                <dt>&rarrb;</dt>
-                <dd>Move down in search results</dd>
-                <dt>&#9166;</dt>
-                <dd>Go to active search result</dd>
-            </dl>
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
         </div>
-        <div class="infos">
-            <h1>Search tricks</h1>
-            <p>
-                Prefix searches with a type followed by a colon (e.g.
-                <code>fn:</code>) to restrict the search to a given type.
-            </p>
-            <p>
-                Accepted types are: <code>fn</code>, <code>mod</code>,
-                <code>struct</code>, <code>enum</code>,
-                <code>trait</code>, <code>typedef</code> (or
-                <code>tdef</code>).
-            </p>
-        </div>
-    </div>
+    </aside>
 
     
 
